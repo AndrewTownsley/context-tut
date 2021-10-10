@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css'
 import { db } from './firebase-config';
-import { collection, getDocs, addDoc, updateDoc, doc } from 'firebase/firestore'
+import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore'
 
 
 const App = () => {
@@ -12,16 +12,18 @@ const App = () => {
 
     const createUser = async (e) => {
         e.preventDefault();
-        await addDoc(usersCollectionRef, { name: newName, age: newAge })
+        await addDoc(usersCollectionRef, { name: newName, age: Number(newAge) })
     }
 
-    const deleteUser = () => {
-        
+    const deleteUser = async (id) => {
+        const userDoc = doc(db, 'notes', id)
+        await deleteDoc(userDoc);
     }
 
     const editUserAge = async (id, age) => {
-        const userDoc = doc(db, 'users', id)
-        const newFields = {age: age + 1};
+        console.log('Edit Age!!');
+        const userDoc = doc(db, 'notes', id)
+        const newFields = {age: Number(age + 1)};
         await updateDoc(userDoc, newFields)
     }
 
@@ -54,8 +56,8 @@ const App = () => {
                         <div className="user-card" key={index}>
                             <h3>Name: {user.name}</h3>
                             <h4>Age: {user.age}</h4>
-                            <button onClick={() => editUserAge(user.id, user.age)}>Edit Age</button>
-                            {/* <button onClick={editUser}>Edit</button> */}
+                            <button onClick={() => {editUserAge(user.id, user.age)}}>Edit Age</button>
+                            <button onClick={() => deleteUser(user.id)}>Delete</button>
                         </div>
                     )
                 }
