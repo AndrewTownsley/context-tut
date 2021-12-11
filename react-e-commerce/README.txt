@@ -4,8 +4,11 @@
 4.  Search Feature
 5.  Update/Add/Delete cart items
 6.  Make a nice product page and checkout UI.
+7.  Error / Loading components
 
 **************************************************
+
+
 
 Page Structure ===
 
