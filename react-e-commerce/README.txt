@@ -7,6 +7,11 @@
 7.  Error / Loading components
 
 **************************************************
+Page Routing...
+1.  Home page product list will display the categories.  Each category will link to a page displaying the products from that category.
+2.  Hardcode the categories for now.  Give each an id.  the link path should be '/products/:id'
+**************************************************
+**************************************************
 
 
 

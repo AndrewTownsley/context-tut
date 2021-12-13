@@ -1,6 +1,6 @@
 import React from 'react'
-import { BrowserRouter, Switch, Link, Route } from 'react-router-dom';
-import Products from '../Product/Product'
+import { BrowserRouter, Switch, NavLink, Route } from 'react-router-dom';
+import Products from '../Category/Category'
 import Cart from '../Cart.jsx/Cart';
 
 
@@ -10,11 +10,11 @@ const Header = () => {
             <nav>
                 <h1>SHOP LOGO</h1>
                 <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/cart">Cart</Link></li>
-                    <li><Link to="/home">Shop</Link></li>
+                    <li><NavLink to="/">Home</NavLink></li>
+                    <li><NavLink to="/cart">Cart</NavLink></li>
+                    <li><NavLink to="/home">Shop</NavLink></li>
                 </ul>
-                <h4><Link to="/cart">CART</Link></h4>
+                <h4><NavLink to="/cart">CART</NavLink></h4>
             </nav>
         </div>
     )
