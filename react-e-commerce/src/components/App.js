@@ -11,20 +11,31 @@ import CategoryList from './CategoryList/CategoryList';
 const App = () => {
 
   const categories = [
-    {id: 1, title: "electronics"},
-    {id: 2, title: "jewelry"},
-    {id: 3, title: "men's clothing"},
-    {id: 4, title: "women's clothing"}
+    {id: 12, title: "electronics"},
+    {id: 23, title: "jewelry"},
+    {id: 34, title: "men's clothing"},
+    {id: 45, title: "women's clothing"}
   ]
   
   return (
       <BrowserRouter>
         <main>
           <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route path="/categorylist" component={CategoryList}/>
-            <Route path="/cart" component={Cart}/>
-            <Route exact path="/category/:id" component={Category} />
+            
+            <Route exact path="/" >
+              <Home categories={categories} />
+            </Route>
+
+            <Route exact path="/categorylist">
+              <CategoryList categories={categories} />
+            </Route>
+
+
+            <Route exact path="/category/:title">
+              <Category categories={categories} />
+            </Route>
+
+            {/* <Route path="/cart" component={Cart}/> */}
             {/* <Route path="/error" component={Error}/> */}
           </Switch>
         </main>

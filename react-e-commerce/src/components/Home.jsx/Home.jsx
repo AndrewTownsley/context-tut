@@ -5,11 +5,11 @@ import Category from '../Category/Category'
 import CategoryList from '../CategoryList/CategoryList';
 
 
-const Home = () => {
+const Home = ({ categories}) => {
     return (
         <div className="Home">
           <Header/>
-          <CategoryList/>
+          <CategoryList categories={categories}/>
         </div>
     )
 }
