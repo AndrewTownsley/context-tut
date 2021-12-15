@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 
@@ -18,15 +18,18 @@ const Category = ({ categories }) => {
 
 
     return (
+        
         <div className="categories">
             <h1>Category detail page</h1>
             <h3>{title}</h3>
+            <Link to="/">Back</Link>
             {
                 products.map(product => (
                     <article key={product.id}>
                         <h3>{product.title}</h3>
                         <img src={product.image} alt="" />
                         <h3>${product.price}</h3>
+                        <button><Link to="/cart">Add to cart</Link></button>
                         <h5>rating: {product.rating.rate}</h5>
                         <p>{product.description}</p>
                     </article>

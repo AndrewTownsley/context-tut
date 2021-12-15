@@ -1,0 +1,30 @@
+
+
+.header {
+    display: flex;
+    padding: 1rem;
+    nav {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      h4 {
+          padding-left: 1rem;
+      }
+      .nav-left {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+      }
+      ul {
+        display: flex;
+
+        padding: 0 1rem;
+        li {
+            padding: 0 1rem;
+        }
+         a {
+          text-decoration: none;
+        }
+      }
+    }
+  }
