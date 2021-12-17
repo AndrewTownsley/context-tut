@@ -1,11 +1,12 @@
 import React from 'react'
 import '../styles/App.scss';
-import { BrowserRouter, Switch, NavLink, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Home from './Home.jsx/Home';
-import Category from './Category/Category';
 import Header from './Header/Header';
 import Cart from './Cart.jsx/Cart';
-import CategoryList from './CategoryList/CategoryList';
+import Products from './products/Products';
+// import Category from './Category/Category';
+// import CategoryList from './CategoryList/CategoryList';
 
 
 
@@ -18,7 +19,6 @@ const App = () => {
   ]
   
   return (
-      <BrowserRouter>
         <main>
             <Header/>
           <Switch>
@@ -26,14 +26,20 @@ const App = () => {
             <Route exact path="/" >
               <Home categories={categories} />
             </Route>
-
+            {/* ///////////////////////////////////// */}
+{/* 
             <Route exact path="/categorylist">
               <CategoryList categories={categories} />
-            </Route>
+            </Route> */}
 
-
+{/* 
             <Route exact path="/category/:title">
               <Category categories={categories} />
+            </Route> */}
+              {/* ///////////////////////////////////// */}
+
+            <Route exact path="/products">
+              <Products />
             </Route>
 
             <Route path="/cart" >
@@ -42,7 +48,6 @@ const App = () => {
             {/* <Route path="/error" component={Error}/> */}
           </Switch>
         </main>
-      </BrowserRouter>
   )
 }
 

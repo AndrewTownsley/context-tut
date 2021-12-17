@@ -25,9 +25,9 @@ const Category = ({ categories }) => {
             <Link to="/">Back</Link>
             {
                 products.map(product => (
-                    <article key={product.id}>
+                    <article className='product-card' key={product.id}>
                         <h3>{product.title}</h3>
-                        <img src={product.image} alt="" />
+                        <img src={product.image} alt="product" />
                         <h3>${product.price}</h3>
                         <button><Link to="/cart">Add to cart</Link></button>
                         <h5>rating: {product.rating.rate}</h5>

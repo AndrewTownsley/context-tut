@@ -1,13 +1,15 @@
 import React from 'react'
-import { BrowserRouter, Switch, Link, Route } from 'react-router-dom';
-import Category from '../Category/Category'
-import CategoryList from '../CategoryList/CategoryList';
+import Filters from '../Filters/Filters';
+import Products from '../products/Products';
+// import Category from '../Category/Category'
+// import CategoryList from '../CategoryList/CategoryList';
 
 
-const Home = ({ categories}) => {
+const Home = () => {
     return (
         <div className="Home">
-          <CategoryList categories={categories}/>
+          <Filters/>
+          <Products/>
         </div>
     )
 }

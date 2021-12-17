@@ -3,14 +3,6 @@ import { BrowserRouter, useParams, Switch, Link, Route } from 'react-router-dom'
 import Category from '../Category/Category';
 import { nanoid } from 'nanoid';
 
-// const categories = [
-//     {id: 12, title: "electronics"},
-//     {id: 23, title: "jewelry"},
-//     {id: 34, title: "men's clothing"},
-//     {id: 45, title: "women's clothing"}
-// ]
-
-
 const CategoryList = ({ categories}) => {
     
 console.log(categories);
