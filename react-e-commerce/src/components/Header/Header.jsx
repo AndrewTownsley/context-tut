@@ -2,7 +2,7 @@ import React from 'react'
 import {FaShoppingCart} from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 // import Products from '../Category/Category'
-import { Dropdown, Badge, Nav } from 'react-bootstrap';
+import { Badge, Dropdown } from 'react-bootstrap';
 import Cart from '../Cart.jsx/Cart';
 
 
@@ -22,10 +22,18 @@ const Header = () => {
                     </ul>
                 </div>
                 {/* <h4><NavLink to="/cart"><AiOutlineShoppingCart></AiOutlineShoppingCart></NavLink></h4> */}
-            
-                        <FaShoppingCart color="black" fontSize="25px"/>
-                         <Badge>{10}</Badge>
-                        {/* <span style={{padding: 10}}>Cart is empty</span> */}
+                <Dropdown alignRight>
+            <Dropdown.Toggle variant="success">
+              <FaShoppingCart color="white" fontSize="25px" />
+              <Badge>10</Badge>
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+            </Dropdown.Menu>
+            </Dropdown>
+
             </nav>
         </header>
     )
