@@ -1,23 +1,43 @@
 import './App.css';
-import Create from './components/create/Create';
-import Delete from './components/delete/Delete';
-import Read from './components/read/Read';
-import Update from './components/update/Update';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import Button from './components/Button';
 
 function App() {
+  const [count, setCount] = useState(0);
+  const [users, setUsers] = useState([])
+
+  useEffect(() => {
+
+    const fetchUserData = () => {
+      fetch(`https://randomuser.me/api`)
+        .then(response => response.json())
+        .then(data => setUsers(data))
+    }
+    fetchUserData();
+  }, [])
+  console.log("Users:", users);
+
   return (
-    <Router>
-    <div className="App">
-      <h1>Crud Operations in React</h1>
-      <div>
-        <Route exact path="/" component={Create}/>
-        <Route exact path="/read" component={Read}/>
-      </div>
-      <Route path="/update" component={Update}/>
-      <Route path="/delete" component={Delete}/>
+    <div>
+      <h1>Fetch Data from the Random User APi...</h1>
+      <section className="users">
+        {
+          users.results.map((user) => (
+            <article key={user.name}>
+              <h4>{user.name}</h4>
+            </article>
+          ))
+        }
+        <p>hello......</p>
+      </section>
+  
+      <h2>Counter</h2>
+        <h3>{count}</h3>
+      <Button 
+        count={count}
+        setCount={setCount}
+      />
     </div>
-    </Router>
   );
 }
 
