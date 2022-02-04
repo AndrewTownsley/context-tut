@@ -1,3 +1,16 @@
 * {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.users {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.user-card {
+  padding: 2rem;
+  margin: 2rem;
+  border: 2px solid #999;
+  border-radius: 3px;
+  max-width: auto;
+}
