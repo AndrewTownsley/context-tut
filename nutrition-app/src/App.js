@@ -1,26 +1,35 @@
 import './App.css';
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Button from './components/Button';
+import User from './components/User';
+import Pagination from './components/Pagination';
+import { USERS_PER_PAGE } from './Constants';
 
 function App() {
   const [count, setCount] = useState(0);
   const [users, setUsers] = useState([])
-  const [pageNumber, setPageNumber] = useState(0);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
     const fetchUserData = () => {
-      fetch(`https://randomuser.me/api/?page=${pageNumber}&results=2
+    axios
+      .get(`https://randomuser.me/api/?page=1&results=50
       `)
-        .then(response => response.json())
-        .then(data => 
-          setUsers([...users,...data.results]),
-          setPageNumber()
-          )
-        
+      .then(response => {
+        const result = response.data.results;
+        setUsers([...users, ...result]);
+        setTotalPages(Math.ceil(result.length / USERS_PER_PAGE));
+      })
     }
     fetchUserData();
   }, [pageNumber])
   console.log("Users:", users);
+
+  const handlePageClick = (number) => {
+    setPageNumber(number)
+  }
 
   return (
     <div>
@@ -29,21 +38,21 @@ function App() {
       <section className="users">
         {
           users.map((user, index) => (
-            <article className='user-card' key={index}>
-              <img src={user.picture.thumbnail} alt={user.name.first} />
-              <div className="user-card-info">
-                  <p>{user.gender}</p>
-                  <p>{user.name.first}</p>
-                  <p>{user.location.city}</p>
-                  <p>{user.email}</p>
-              </div>
-            </article>
+            <User
+              user={user}
+              index={index}
+              key={user.login.uuid}
+            />
        
           ))
           
         }
       </section>
-  
+      <Pagination
+        totalPages={totalPages}
+        pageNumber={pageNumber}
+        handlePageClick={handlePageClick}
+      />
       <h2>Counter</h2>
         <h3>{count}</h3>
       <Button 

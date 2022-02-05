@@ -2,6 +2,10 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+a {
+  padding: 1rem;
+}
+
 .users {
   display: flex;
   flex-wrap: wrap;
@@ -13,4 +17,12 @@
   border: 2px solid #999;
   border-radius: 3px;
   max-width: auto;
+}
+
+.page-numbers {
+  padding: 1rem;
+}
+
+.active-link {
+  background-color: #999;
 }
