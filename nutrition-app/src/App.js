@@ -5,22 +5,27 @@ import Button from './components/Button';
 function App() {
   const [count, setCount] = useState(0);
   const [users, setUsers] = useState([])
-  let amount = 5;
+  const [pageNumber, setPageNumber] = useState(0);
 
   useEffect(() => {
     const fetchUserData = () => {
-      fetch(`https://randomuser.me/api/?results=${amount}`)
+      fetch(`https://randomuser.me/api/?page=${pageNumber}&results=2
+      `)
         .then(response => response.json())
-        .then(data => setUsers(data.results))
+        .then(data => 
+          setUsers([...users,...data.results]),
+          setPageNumber()
+          )
         
     }
     fetchUserData();
-  }, [amount])
+  }, [pageNumber])
   console.log("Users:", users);
 
   return (
     <div>
       <h1>Fetch Data from the Random User APi...</h1>
+      <button onClick={() => setPageNumber((pageNumber) => pageNumber + 1)}>Load More</button>
       <section className="users">
         {
           users.map((user, index) => (
