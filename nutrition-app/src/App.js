@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import UseForm from './components/UseForm';
-
-
-// Typescript Version to be displayed in portfolio and resume after the plain React version is done.
-// Typescript Version to be displayed in portfolio and resume after the plain React version is done.
-// Typescript Version to be displayed in portfolio and resume after the plain React version is done.
+import useRandomColor from './utils/useRandomColor';
 
 const App = () => {
+const { color, changeColor } = useRandomColor();
+
+  
   return (
-      <div>
-          <h1>React Form Validation</h1>
-          <UseForm/>
+      <div style={{width: '100vw', height: '100vh', backgroundColor: '#' + color}}>
+          {/* <h1>React Form Validation</h1>
+          <UseForm/> */}
+        <button onClick={changeColor}>
+          Change Color
+        </button>
+
       </div>
   );
 };
